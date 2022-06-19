@@ -2,7 +2,7 @@ import requests as requests
 import json
 import pandas as pd
 import joblib
-import datetime
+from datetime import datetime
 
 def lambda_handler(event, context):
     
@@ -14,6 +14,7 @@ def lambda_handler(event, context):
     ticker = body_dict["ticker_symbol"]
     data = body_dict["stock_metadata_list"]
 
+    Date = []
     Open = []
     High = []
     Low = []
@@ -21,6 +22,7 @@ def lambda_handler(event, context):
     Volume =[]
 
     for item in data:
+      Date.append(item['Date'])
       Open.append(item['Open'])
       High.append(item['High'])
       Low.append(item['Low'])
@@ -53,9 +55,12 @@ def lambda_handler(event, context):
     output28D = result28D[0]
 
     #calculate datetime based on request datetime
-    x1D = datetime.datetime.now() + datetime.timedelta(days=1)
-    x7D = datetime.datetime.now() + datetime.timedelta(days=7)
-    x28D = datetime.datetime.now() + datetime.timedelta(days=28)
+    latestDate = Date[0]
+    dt = datetime.strptime(latestDate, '%Y-%m-%dT%H:%M:%S.%fZ')
+    epochdt = dt.timestamp()
+    x1D = epochdt + 86400
+    x7D = epochdt + 7*86400
+    x28D = epochdt + 28*86400
 
     #JSON string to return
     ret = json.dumps({
@@ -64,9 +69,9 @@ def lambda_handler(event, context):
         "ticker_symbol":ticker,
         "model_type":2,
         "prediction":[
-          {x1D.ctime(): output1D},
-          {x7D.ctime(): output7D},
-          {x28D.ctime(): output28D}
+          {x1D: output1D},
+          {x7D: output7D},
+          {x28D: output28D}
         ]}}, indent=4)
 
     return ret
