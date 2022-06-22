@@ -82,7 +82,7 @@ def lambda_handler(event, context):
 
     #JSON string to return
     ret = json.dumps({
-      "message":"SUCCESS",
+      "message":"This is a test message v1",
       "result":{
         "ticker_symbol":ticker,
         "model_type":2,
