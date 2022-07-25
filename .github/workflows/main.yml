@@ -10,19 +10,17 @@ on:
   pull_request:
     branches: [ "main" ]
 
-jobs:
-  deploy:
-    name: Deploy to EC2 on master branch push
+jobs: 
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout the files
-        uses: actions/checkout@v2
-
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.TARGET_DIR }}
+    - uses: actions/checkout@master
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{secrets.HOST}}
+        username: "ubuntu"
+        key: ${{ secrets.ssh_password}}
+        source: "generate_csv.py,model_predict.py,process_data.py,run_prog.sh,upload_ml_prices.py"
+        target: "/home/ubuntu"
