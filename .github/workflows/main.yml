@@ -15,12 +15,5 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: copy file via ssh password
-      uses: appleboy/scp-action@master
-      with:
-        password: ${{secrets.ssh_password}}
-        source: "generate_csv.py,model_predict.py,process_data.py,run_prog.sh,upload_ml_prices.py"
-        username: "ubuntu"
-        host: "ec2-54-157-45-155.compute-1.amazonaws.com"
-        target: "/home/ubuntu"
+    - uses: actions/checkout@v3
+    - run: scp -i ${{secrets.ssh_password}} generate_csv.py,model_predict.py,process_data.py,run_prog.sh,upload_ml_prices.py ubuntu@ec2-54-157-45-155.compute-1.amazonaws.com:/home/ubuntu
