@@ -19,9 +19,8 @@ jobs:
     - name: copy file via ssh password
       uses: appleboy/scp-action@master
       with:
-        host: ${{secrets.HOST}}
-        username: ${{secrets.USERNAME}}
         password: ${{secrets.ssh_password}}
-        port: ${{secrets.PORT}}
         source: "generate_csv.py,model_predict.py,process_data.py,run_prog.sh,upload_ml_prices.py"
+        username: ${{secrets.USERNAME}}
+        host: ${{secrets.HOST}}
         target: "/home/ubuntu"
