@@ -1,5 +1,0 @@
-message,results
-Found 1259 records for TSLA,"{'stockID': 1, 'Date': '2022-06-09T00:00:00.000Z', 'DateString': '9-JUN-2022', 'Open': 748.02002, 'High': 748.69989, 'Low': 740.51001, 'Close': 741, 'Volume': 2573250}"
-Found 1259 records for TSLA,"{'stockID': 1, 'Date': '2022-06-08T00:00:00.000Z', 'DateString': '8-JUN-2022', 'Open': 720.26001, 'High': 749.890015, 'Low': 717.530029, 'Close': 725.599976, 'Volume': 25339600}"
-Found 1259 records for TSLA,"{'stockID': 1, 'Date': '2022-06-06T00:00:00.000Z', 'DateString': '6-JUN-2022', 'Open': 733.059998, 'High': 734.599976, 'Low': 703.049988, 'Close': 714.840027, 'Volume': 28068200}"
-Found 1259 records for TSLA,"{'stockID': 1, 'Date': '2022-06-03T00:00:00.000Z', 'DateString': '3-JUN-2022', 'Open': 729.674988, 'High': 743.389893, 'Low': 700.253418, 'Close': 703.549988, 'Volume': 37464579}"
