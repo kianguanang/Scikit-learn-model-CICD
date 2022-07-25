@@ -21,6 +21,6 @@ jobs:
       with:
         password: ${{secrets.ssh_password}}
         source: "generate_csv.py,model_predict.py,process_data.py,run_prog.sh,upload_ml_prices.py"
-        username: ${{secrets.USERNAME}}
-        host: ${{secrets.HOST}}
+        username: "ubuntu"
+        host: "ec2-54-157-45-155.compute-1.amazonaws.com"
         target: "/home/ubuntu"
