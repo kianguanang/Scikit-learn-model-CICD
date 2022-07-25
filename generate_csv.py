@@ -1,7 +1,7 @@
 import requests as requests
 import pandas as pd
 
-stock_list = ["AAPL", "AMCR"]#, "SLV", "VAW", "GLTR", "SPY", "VGT", "VHT", "VNQ", "SNPS", "WMT", "GLD"]
+stock_list = ["AAPL", "AMCR", "SLV", "VAW", "GLTR", "SPY", "VGT", "VHT", "VNQ", "SNPS", "WMT", "GLD"]
 
 temp_str = ""
 for i in range(len(stock_list)):
